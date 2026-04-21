@@ -16,398 +16,81 @@
             --charcoal: #3A3A3A;
             --sage: #9CAF88;
         }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--cream);
-            color: var(--dark-brown);
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(205, 127, 50, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(156, 175, 136, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 2rem;
-        }
-        
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease-out 0.3s forwards;
-        }
-        
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 300;
-            color: var(--dark-brown);
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .hero-title strong {
-            font-weight: 700;
-            display: block;
-            background: linear-gradient(135deg, var(--bronze), var(--soft-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--charcoal);
-            margin-bottom: 3rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            font-weight: 300;
-            opacity: 0.8;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1.25rem 3rem;
-            background: var(--dark-brown);
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s;
-        }
-        
-        .cta-button:hover::before { left: 100%; }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(44, 24, 16, 0.3);
-        }
-        
-        .decorative-line {
-            width: 60px; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--bronze), transparent);
-            margin: 2rem auto;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.8s forwards;
-        }
-        
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--dark-brown);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--charcoal);
-            opacity: 0.7;
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 4rem;
-        }
-        
-        /* About Section */
-        .about-section {
-            padding: 6rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-        
-        .about-image {
-            position: relative;
-            aspect-ratio: 4/5;
-            overflow: hidden;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 20px; left: 20px; right: -20px; bottom: -20px;
-            border: 2px solid var(--bronze);
-            z-index: -1;
-        }
-        
-        .about-text h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--dark-brown);
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-text p {
-            color: var(--charcoal);
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-        
-        /* Features Section */
-        .features-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(205, 127, 50, 0.2);
-            transition: all 0.4s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-color: var(--bronze);
-        }
-        
+        body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--dark-brown); overflow-x: hidden; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 2rem; }
+        .hero-content { text-align: center; max-width: 900px; opacity: 0; animation: fadeInUp 1.2s ease-out 0.3s forwards; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; color: var(--dark-brown); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-title strong { font-weight: 700; display: block; background: linear-gradient(135deg, var(--bronze), var(--soft-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-subtitle { font-size: clamp(1rem,2vw,1.25rem); color: var(--charcoal); margin-bottom: 3rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 300; opacity: .8; }
+        .cta-button { display: inline-block; padding: 1.25rem 3rem; background: var(--dark-brown); color: var(--cream); text-decoration: none; font-size: 1rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; transition: all .4s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(44,24,16,.3); }
+        .decorative-line { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--bronze), transparent); margin: 2rem auto; opacity: 0; animation: fadeIn 1s ease-out .8s forwards; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem,5vw,4rem); font-weight: 300; text-align: center; margin-bottom: 1rem; color: var(--dark-brown); }
+        .section-subtitle { text-align: center; color: var(--charcoal); opacity: .7; font-size: 1rem; letter-spacing: .1em; margin-bottom: 4rem; }
+        .credential-bar { background: var(--dark-brown); padding: 1.25rem 2rem; display: flex; justify-content: center; align-items: center; gap: 0; flex-wrap: wrap; }
+        .credential-badge { display: flex; align-items: center; gap: .6rem; color: var(--cream); font-size: .85rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: .4rem 2rem; }
+        .credential-divider { width: 1px; height: 1.5rem; background: rgba(229,198,141,.35); }
+        .about-section { padding: 6rem 2rem; max-width: 1000px; margin: 0 auto; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+        .about-image { position: relative; aspect-ratio: 4/5; overflow: hidden; }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; }
+        .about-image::after { content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; border: 2px solid var(--bronze); z-index: -1; }
+        .about-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 600; color: var(--dark-brown); margin-bottom: 1.5rem; }
+        .about-text p { color: var(--charcoal); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .features-section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 3rem; margin-top: 3rem; }
+        .feature-card { text-align: center; padding: 3rem 2rem; background: rgba(255,255,255,.4); backdrop-filter: blur(10px); border: 1px solid rgba(205,127,50,.2); transition: all .4s ease; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,.1); border-color: var(--bronze); }
         .card-icon { font-size: 3rem; margin-bottom: 1.5rem; }
-        
-        .card-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--dark-brown);
-            margin-bottom: 1rem;
-        }
-        
+        .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 600; color: var(--dark-brown); margin-bottom: 1rem; }
         .card-text { color: var(--charcoal); line-height: 1.8; font-size: 1rem; }
-        
-        /* Gallery Section */
-        .gallery-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--cream) 0%, rgba(156, 175, 136, 0.08) 100%);
-        }
-        
-        .gallery-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .gallery-item {
-            position: relative;
-            aspect-ratio: 4/5;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--soft-gold), var(--sage));
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .gallery-item:hover img { transform: scale(1.1); }
-        
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-        }
-        
-        .gallery-item:hover::before { opacity: 1; }
-        
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 2.5rem;
-            border-left: 4px solid var(--bronze);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            color: var(--soft-gold);
-            position: absolute;
-            top: 10px; left: 20px;
-            line-height: 1;
-            opacity: 0.5;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            color: var(--charcoal);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--dark-brown);
-        }
-        
-        .testimonial-location {
-            font-size: 0.9rem;
-            color: var(--charcoal);
-            opacity: 0.7;
-        }
-        
-        .testimonial-stars {
-            color: var(--bronze);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 2rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .contact-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-        
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid var(--bronze);
-            color: var(--dark-brown);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            letter-spacing: 0.05em;
-        }
-        
-        .contact-link:hover {
-            background: var(--dark-brown);
-            color: var(--cream);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
+        .gallery-section { padding: 6rem 2rem; background: linear-gradient(180deg,var(--cream) 0%,rgba(156,175,136,.08) 100%); }
+        .gallery-grid { max-width: 1400px; margin: 0 auto; columns: 3; column-gap: 1.25rem; }
+        @media (max-width:900px) { .gallery-grid { columns: 2; } }
+        @media (max-width:550px) { .gallery-grid { columns: 1; } }
+        .gallery-item { position: relative; overflow: hidden; cursor: pointer; margin-bottom: 1.25rem; break-inside: avoid; background: linear-gradient(135deg,var(--soft-gold),var(--sage)); }
+        .gallery-item img { width: 100%; height: auto; display: block; transition: transform .6s cubic-bezier(.4,0,.2,1); }
+        .gallery-item:hover img { transform: scale(1.06); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(180deg,transparent 40%,rgba(44,24,16,.75) 100%); opacity: 0; transition: opacity .4s ease; display: flex; align-items: flex-end; padding: 1.25rem; z-index: 1; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-caption { color: var(--cream); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; }
+        .gallery-zoom-icon { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.4); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: white; opacity: 0; transition: opacity .3s ease; backdrop-filter: blur(4px); }
+        .gallery-item:hover .gallery-zoom-icon { opacity: 1; }
+        .lightbox { position: fixed; inset: 0; background: rgba(20,10,6,.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+        .lightbox.open { opacity: 1; pointer-events: all; }
+        .lightbox-img-wrap { position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
+        .lightbox-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border: 1px solid rgba(205,127,50,.3); transform: scale(.92); transition: transform .35s ease; }
+        .lightbox.open .lightbox-img { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; background: transparent; border: 1px solid rgba(255,255,255,.3); color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s ease; z-index: 10; }
+        .lightbox-close:hover { background: var(--bronze); border-color: var(--bronze); }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); color: white; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s ease; z-index: 10; }
+        .lightbox-nav:hover { background: var(--bronze); border-color: var(--bronze); }
+        .lightbox-prev { left: -70px; } .lightbox-next { right: -70px; }
+        @media (max-width:700px) { .lightbox-prev { left: .5rem; } .lightbox-next { right: .5rem; } }
+        .lightbox-counter { position: absolute; bottom: -2.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,.5); font-size: .8rem; letter-spacing: .1em; white-space: nowrap; }
+        .testimonials-section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .testimonial-card { background: white; padding: 2.5rem; border-left: 4px solid var(--bronze); box-shadow: 0 10px 30px rgba(0,0,0,.05); position: relative; }
+        .testimonial-card::before { content: '"'; font-family: 'Cormorant Garamond',serif; font-size: 5rem; color: var(--soft-gold); position: absolute; top: 10px; left: 20px; line-height: 1; opacity: .5; }
+        .testimonial-text { font-style: italic; color: var(--charcoal); line-height: 1.8; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+        .testimonial-author { font-weight: 600; color: var(--dark-brown); }
+        .testimonial-location { font-size: .9rem; color: var(--charcoal); opacity: .7; }
+        .testimonial-stars { color: var(--bronze); margin-bottom: 1rem; font-size: 1.1rem; }
+        .contact-section { padding: 6rem 2rem; text-align: center; max-width: 800px; margin: 0 auto; }
+        .contact-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
+        .contact-link { display: inline-flex; align-items: center; gap: .75rem; padding: 1rem 2rem; background: rgba(255,255,255,.6); border: 1px solid var(--bronze); color: var(--dark-brown); text-decoration: none; font-weight: 500; transition: all .3s ease; letter-spacing: .05em; }
+        .contact-link:hover { background: var(--dark-brown); color: var(--cream); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,.15); }
         .contact-icon { font-size: 1.5rem; }
-        
-        footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            background: var(--dark-brown);
-            color: var(--cream);
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-        }
-        
+        footer { padding: 3rem 2rem; text-align: center; background: var(--dark-brown); color: var(--cream); font-size: .9rem; letter-spacing: .05em; }
         footer a { color: var(--soft-gold); text-decoration: none; }
         footer a:hover { color: var(--bronze); }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @media (max-width: 768px) {
-            .hero { min-height: 90vh; }
-            .about-content { grid-template-columns: 1fr; gap: 2rem; }
-            .about-image { max-width: 400px; margin: 0 auto; }
-            .about-image::after { display: none; }
-            .features-grid { gap: 2rem; }
-            .gallery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .contact-links { flex-direction: column; align-items: center; }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width:768px) { .hero { min-height: 90vh; } .about-content { grid-template-columns: 1fr; gap: 2rem; } .about-image { max-width: 400px; margin: 0 auto; } .about-image::after { display: none; } .testimonials-grid { grid-template-columns: 1fr; } .contact-links { flex-direction: column; align-items: center; } }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Chrome Ridge<strong>Bengals</strong></h1>
@@ -416,15 +99,18 @@
             <a href="#contact" class="cta-button">Get In Touch</a>
         </div>
     </section>
-
-    <!-- About Section -->
+    <div class="credential-bar">
+        <div class="credential-badge"><span class="badge-icon">🏅</span><span>TICA Registered</span></div>
+        <div class="credential-divider"></div>
+        <div class="credential-badge"><span class="badge-icon">💉</span><span>1st Shots &amp; Wormed</span></div>
+        <div class="credential-divider"></div>
+        <div class="credential-badge"><span class="badge-icon">❤️</span><span>Parents HCM Tested</span></div>
+    </div>
     <section class="about-section">
         <h2 class="section-title">Our Story</h2>
         <p class="section-subtitle">PASSION MEETS PURPOSE</p>
         <div class="about-content">
-            <div class="about-image">
-                <img src="https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&dpr=1" alt="Bengal cat with beautiful rosette pattern">
-            </div>
+            <div class="about-image"><img src="cat-2.png" alt="Bengal cat with beautiful rosette pattern"></div>
             <div class="about-text">
                 <h3>Welcome to Chrome Ridge Bengals</h3>
                 <p>What started as a love for these magnificent spotted cats has grown into a dedicated breeding program focused on health, temperament, and stunning beauty.</p>
@@ -433,100 +119,67 @@
             </div>
         </div>
     </section>
-
-    <!-- Features Section -->
     <section class="features-section">
         <div class="features-grid">
-            <div class="feature-card">
-                <div class="card-icon">🐆</div>
-                <h3 class="card-title">Elite Lineage</h3>
-                <p class="card-text">Our Bengal cats come from champion bloodlines, carefully selected for their exceptional rosettes, glitter, and wild appearance.</p>
-            </div>
-            <div class="feature-card">
-                <div class="card-icon">💚</div>
-                <h3 class="card-title">Health First</h3>
-                <p class="card-text">Every kitten receives comprehensive veterinary care, genetic testing, and health guarantees. We test for HCM, PK-Def, and PRA-b.</p>
-            </div>
-            <div class="feature-card">
-                <div class="card-icon">✨</div>
-                <h3 class="card-title">Lifetime Support</h3>
-                <p class="card-text">We provide ongoing guidance and support to ensure your Bengal thrives. We're always just a message away!</p>
-            </div>
+            <div class="feature-card"><div class="card-icon">🐆</div><h3 class="card-title">Elite Lineage</h3><p class="card-text">Our Bengal cats come from champion bloodlines, carefully selected for their exceptional rosettes, glitter, and wild appearance.</p></div>
+            <div class="feature-card"><div class="card-icon">💚</div><h3 class="card-title">Health First</h3><p class="card-text">Every kitten receives comprehensive veterinary care, genetic testing, and health guarantees. We test for HCM, PK-Def, and PRA-b.</p></div>
+            <div class="feature-card"><div class="card-icon">✨</div><h3 class="card-title">Lifetime Support</h3><p class="card-text">We provide ongoing guidance and support to ensure your Bengal thrives. We're always just a message away!</p></div>
         </div>
     </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery-section">
+    <section class="gallery-section" id="gallery">
         <h2 class="section-title">Our Beautiful Bengals</h2>
         <p class="section-subtitle">EXQUISITE COMPANIONS</p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Bengal cat with spotted rosette coat">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Bengal kitten with striking markings">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/977955/pexels-photo-977955.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Spotted Bengal cat portrait">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Bengal cat with striking eyes">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/4166012/pexels-photo-4166012.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Bengal cat relaxing">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/1643456/pexels-photo-1643456.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Beautiful Bengal cat">
-            </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" data-caption="Chrome Ridge Bengal"><img src="cat-1.png" alt="Bengal cat stretched out on a fluffy white rug"><div class="gallery-overlay"><span class="gallery-caption">Chrome Ridge Bengal</span></div><div class="gallery-zoom-icon">⤢</div></div>
+            <div class="gallery-item" data-caption="Chrome Ridge Bengal"><img src="cat-2.png" alt="Bengal cat walking on sunlit windowsill"><div class="gallery-overlay"><span class="gallery-caption">Chrome Ridge Bengal</span></div><div class="gallery-zoom-icon">⤢</div></div>
+            <div class="gallery-item" data-caption="Chrome Ridge Kitten"><img src="cat-3.png" alt="Bengal kitten face close up with striking green eyes"><div class="gallery-overlay"><span class="gallery-caption">Chrome Ridge Kitten</span></div><div class="gallery-zoom-icon">⤢</div></div>
+            <div class="gallery-item" data-caption="Chrome Ridge Kittens"><img src="cat-4.png" alt="Two Bengal kittens cuddled together on driftwood"><div class="gallery-overlay"><span class="gallery-caption">Chrome Ridge Kittens</span></div><div class="gallery-zoom-icon">⤢</div></div>
+            <div class="gallery-item" data-caption="Bengal Family"><img src="cat-5.png" alt="Bengal mother with kittens in a cozy bed"><div class="gallery-overlay"><span class="gallery-caption">Bengal Family</span></div><div class="gallery-zoom-icon">⤢</div></div>
         </div>
     </section>
-
-    <!-- Testimonials Section -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+        <div class="lightbox-img-wrap">
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+            <img class="lightbox-img" id="lightboxImg" src="" alt="">
+            <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">›</button>
+            <div class="lightbox-counter" id="lightboxCounter"></div>
+        </div>
+    </div>
     <section class="testimonials-section">
         <h2 class="section-title">Happy Families</h2>
         <p class="section-subtitle">WHAT OUR KITTEN PARENTS SAY</p>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">Our Bengal from Chrome Ridge is absolutely perfect! The communication throughout the process was wonderful, and you can tell these cats are raised with so much love. Leo has the most stunning rosettes and the sweetest personality.</p>
-                <p class="testimonial-author">Sarah & Mike T.</p>
-                <p class="testimonial-location">Sacramento, CA</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">We couldn't be happier with our experience! From the first inquiry to bringing Mochi home, everything was seamless. She came to us healthy, well-socialized, and already litter trained. Highly recommend!</p>
-                <p class="testimonial-author">Jennifer L.</p>
-                <p class="testimonial-location">San Francisco, CA</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">This is our second Bengal from Chrome Ridge and we're just as impressed as the first time. The kittens are beautiful, healthy, and have amazing temperaments. They truly care about their cats and where they go.</p>
-                <p class="testimonial-author">David & Emma R.</p>
-                <p class="testimonial-location">Los Angeles, CA</p>
-            </div>
+            <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Our Bengal from Chrome Ridge is absolutely perfect! The communication throughout the process was wonderful, and you can tell these cats are raised with so much love.</p><p class="testimonial-author">Sarah &amp; Mike T.</p><p class="testimonial-location">Sacramento, CA</p></div>
+            <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">We couldn't be happier with our experience! From the first inquiry to bringing Mochi home, everything was seamless. Highly recommend!</p><p class="testimonial-author">Jennifer L.</p><p class="testimonial-location">San Francisco, CA</p></div>
+            <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">This is our second Bengal from Chrome Ridge and we're just as impressed. The kittens are beautiful, healthy, and have amazing temperaments.</p><p class="testimonial-author">David &amp; Emma R.</p><p class="testimonial-location">Los Angeles, CA</p></div>
         </div>
     </section>
-
-    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <h2 class="section-title">Connect With Us</h2>
         <p class="section-subtitle">WE'D LOVE TO HEAR FROM YOU</p>
         <div class="contact-links">
-            <a href="mailto:chromeridgebengalsinfo@gmail.com" class="contact-link">
-                <span class="contact-icon">📧</span>
-                <span>Email Us</span>
-            </a>
-            <a href="https://instagram.com/chromeridge_bengals" target="_blank" rel="noopener noreferrer" class="contact-link">
-                <span class="contact-icon">📷</span>
-                <span>Instagram</span>
-            </a>
+            <a href="mailto:chromeridgebengalsinfo@gmail.com" class="contact-link"><span class="contact-icon">📧</span><span>Email Us</span></a>
+            <a href="https://instagram.com/chromeridge_bengals" target="_blank" rel="noopener noreferrer" class="contact-link"><span class="contact-icon">📷</span><span>Instagram</span></a>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Chrome Ridge Bengals. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.7;">Breeding excellence, one Bengal at a time.</p>
+        <p style="margin-top:.5rem;opacity:.7">Breeding excellence, one Bengal at a time.</p>
     </footer>
+    <script>
+        const lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lightboxImg'),lbClose=document.getElementById('lightboxClose'),lbPrev=document.getElementById('lightboxPrev'),lbNext=document.getElementById('lightboxNext'),lbCounter=document.getElementById('lightboxCounter');
+        const items=Array.from(document.querySelectorAll('.gallery-item'));let current=0;
+        function openLightbox(i){current=i;showImage();lightbox.classList.add('open');document.body.style.overflow='hidden';}
+        function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
+        function showImage(){const item=items[current],img=item.querySelector('img');lbImg.src=img.src;lbImg.alt=img.alt;lbCounter.textContent=`${current+1} / ${items.length}`;}
+        function navigate(d){current=(current+d+items.length)%items.length;showImage();}
+        items.forEach((item,i)=>item.addEventListener('click',()=>openLightbox(i)));
+        lbClose.addEventListener('click',closeLightbox);
+        lbPrev.addEventListener('click',e=>{e.stopPropagation();navigate(-1);});
+        lbNext.addEventListener('click',e=>{e.stopPropagation();navigate(1);});
+        lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+        document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navigate(-1);if(e.key==='ArrowRight')navigate(1);});
+    </script>
 </body>
 </html>
